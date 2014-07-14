@@ -5,6 +5,9 @@
 # With contributions from many others: 
 # https://github.com/carlesfe/bashblog/contributors
 
+# GG For Debugging purpose uncomment
+#set -x
+
 #########################################################################################
 #
 # README
@@ -250,7 +253,8 @@ test_markdown() {
     out="/tmp/md-out-$(echo $RANDOM).html"
     good="/tmp/md-good-$(echo $RANDOM).html"
     echo -e "line 1\n\nline 2" > $in
-    echo -e "<p>line 1</p>\n\n<p>line 2</p>" > $good
+    #echo -e "<p>line 1</p>\n\n<p>line 2</p>" > $good
+    echo -e "<p>line 1</p>\n<p>line 2</p>" > $good
     $markdown_bin $in > $out 2> /dev/null
     diff $good $out &> /dev/null # output is irrelevant, we'll check $?
     if [[ $? -ne 0 ]]; then
